@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::post('/add-blog', [BlogController::class, 'addBlog']);
+Route::get('/blog-list', [BlogController::class, 'listBlog']);
+
+Route::post('/add-comment', [CommentController::class, 'addComment']);
+Route::get('/comment-list', [CommentController::class, 'listComment']);
